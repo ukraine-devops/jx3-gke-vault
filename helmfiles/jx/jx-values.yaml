@@ -20,16 +20,24 @@ jxRequirements:
     enabled: false
     schedule: ""
   cluster:
+    chartRepository: http://jenkins-x-chartmuseum.jx.svc.cluster.local:8080
+    clusterName: tf-jx-right-dove
     devEnvApprovers:
     - todo
     environmentGitOwner: todo
     gitKind: github
     gitName: github
     gitServer: https://github.com
+    gke:
+      projectNumber: "1035284776035"
+    project: jx3-terraform-gke-ua
     provider: gke
     registry: gcr.io
+    zone: us-central1-a
   environments:
   - key: dev
+    owner: ukraine-devops
+    repository: jx3-gke-vault
   - key: staging
   - key: production
   ingress:
@@ -39,17 +47,33 @@ jxRequirements:
     tls:
       email: ""
       enabled: false
-      production: false
+      production: true
+  kuberhealthy: true
+  pipelineUser:
+    username: jx3-machine-acc
   repository: nexus
   secretStorage: vault
-  vault: {}
+  storage:
+  - name: logs
+    url: gs://logs-tf-jx-right-dove-7c82f33229e2
+  - name: reports
+    url: gs://reports-tf-jx-right-dove-7c82f33229e2
+  - name: repository
+    url: gs://repository-tf-jx-right-dove-7c82f33229e2
+  terraformVault: true
+  vault:
+    bucket: vault-tf-jx-right-dove-7c82f33229e2
+    key: crypto-key-tf-jx-right-dove-7c82f33229e2
+    keyring: keyring-tf-jx-right-dove-7c82f33229e2
+    name: tf-jx-right-dove
+    serviceAccount: tf-jx-right-dove-vt
   webhook: lighthouse
 jxRequirementsIngressExternalDNS:
   enabled: false
 jxRequirementsIngressTLS:
   enabled: false
 jxRequirementsKuberhealthy:
-  enabled: false
+  enabled: true
 jxRequirementsTLSCheck:
   enabled: false
 jxRequirementsVault:
