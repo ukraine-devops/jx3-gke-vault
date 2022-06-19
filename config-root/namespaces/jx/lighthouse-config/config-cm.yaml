@@ -41,7 +41,7 @@ data:
         - needs-rebase
         repos:
         - ukraine-devops/jx3-gke-vault
-      target_url: http://lighthouse-jx./merge/status
+      target_url: http://lighthouse-jx.34.135.247.53.nip.io/merge/status
 kind: ConfigMap
 metadata:
   creationTimestamp: null
